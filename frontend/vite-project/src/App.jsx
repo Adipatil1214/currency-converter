@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
 
 function App() {
   const [formData, setformData] = useState({
@@ -10,7 +11,7 @@ function App() {
   });
   const [result, setresult] = useState(null);
   const [error, seterror] = useState(null);
-
+  
   const currencyCodes = ["USD", "EUR", "GBP", "GHS", "JPY", "CAD", "BSD"];
   const handleChange = (e)=>{
     const {name,value} = e.target;
@@ -24,7 +25,7 @@ function App() {
   const handleSubmit =async(e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5001/api",
+      const response = await axios.post(`${API}/api`,
         formData)
       setresult(response?.data);
       seterror('')
