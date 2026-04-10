@@ -8,7 +8,10 @@ const port = process.env.PORT || 5002;
 
 
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:[
+    "http://localhost:5173",
+    "https://currency-converter-six-flame.vercel.app"
+  ],
 }))
 app.use(express.json());
 
